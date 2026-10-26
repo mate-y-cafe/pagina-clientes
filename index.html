@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Mate & Café: boutique online, armador de kits, menú del local, reservas e invitaciones.">
+<title>Mate & Café</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;0,900;1,700;1,900&family=Manrope:wght@400;500;600;700;800&display=swap">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+<div class="wrap">
+  <nav class="top glass" aria-label="Principal">
+    <a class="brand" href="#inicio">
+      <span class="ico" aria-hidden="true">🧉</span>
+      <span><b>MATE <i>&amp;</i> CAFÉ</b><small>Cafetería &amp; Boutique</small></span>
+    </a>
+    <ul class="links">
+      <li><a href="#tienda" data-nav="tienda">Boutique</a></li>
+      <li><a href="#armar" data-nav="armar">Armá tu Mate</a></li>
+      <li><a href="#menu" data-nav="menu">Menú del Local</a></li>
+      <li><a href="#reservas" data-nav="reservas">Reservas</a></li>
+      <li><a href="#invitar" data-nav="invitar">Invitá a un amigo</a></li>
+    </ul>
+    <a class="pill carro" href="#carrito" data-nav="carrito">🛒 Carrito <span id="contador" class="contador" hidden>0</span></a>
+  </nav>
+
+  <main>
+    <!-- INICIO -->
+    <section id="v-inicio">
+      <div class="hero">
+        <div class="hero-card glass">
+          <span class="badge">☕ Café de especialidad + 🧉 Cultura del mate</span>
+          <h1>El encuentro entre el <em>mate</em> y el café</h1>
+          <p class="lead">Disfrutá de nuestra pastelería artesanal y café de origen en nuestro local, o comprá kits de mate personalizados para llevarte la experiencia a tu casa.</p>
+          <div class="actions">
+            <a class="btn solid" href="#tienda">🧉 Ver Tienda Online</a>
+            <a class="btn soft" href="#armar">✨ Armá tu Kit Personalizado</a>
+          </div>
+        </div>
+        <div class="hero-art" id="hero-art" role="img" aria-label="Un mate con bombilla, una taza de café y un termo sobre una mesa de madera"></div>
+      </div>
+
+      <div class="quick">
+        <a class="glass" href="#menu"><span class="tile">☕</span><span><small>Sentate con nosotros</small><b>Menú del local</b></span></a>
+        <a class="glass" href="#reservas"><span class="tile">📅</span><span><small>Guardamos tu mesa</small><b>Reservá</b></span></a>
+        <a class="glass" href="#invitar"><span class="tile">💌</span><span><small>Compartí un momento</small><b>Invitá a un amigo</b></span></a>
+        <a class="glass" href="#tienda"><span class="tile">🛒</span><span><small>Llevate el ritual</small><b>Boutique</b></span></a>
+      </div>
+
+      <section class="bloque glass" aria-labelledby="llegar-t">
+        <div class="llegar">
+          <div>
+            <span class="eyebrow">Visitanos</span>
+            <h2 id="llegar-t">Encontrá el local</h2>
+            <p class="direccion" id="direccion"></p>
+            <p class="nota" id="localidad"></p>
+            <a id="maps-link" class="btn solid" href="#" target="_blank" rel="noopener">📍 Abrir en Google Maps</a>
+            <h3>Horarios</h3>
+            <ul class="horarios" id="horarios"></ul>
+          </div>
+          <div class="mapa">
+            <svg viewBox="0 0 400 220" role="img" aria-label="Mapa ilustrativo de Palermo con la ubicación del local">
+              <rect width="400" height="220" fill="#e9e6d6"/>
+              <rect x="22" y="26" width="112" height="66" rx="12" fill="#8BA870" opacity="0.4"/>
+              <rect x="252" y="140" width="120" height="58" rx="12" fill="#C8B29B" opacity="0.45"/>
+              <rect x="40" y="150" width="90" height="46" rx="10" fill="#C8B29B" opacity="0.3"/>
+              <path d="M0 110 H400" stroke="#FFFFFF" stroke-width="16"/>
+              <path d="M200 0 V220" stroke="#FFFFFF" stroke-width="12"/>
+              <path d="M0 42 L400 74" stroke="#FFFFFF" stroke-width="8"/>
+              <path d="M70 220 L150 0" stroke="#FFFFFF" stroke-width="8"/>
+              <text x="22" y="102" font-size="11" font-weight="700" fill="#6E5A4D" font-family="Manrope, sans-serif">Av. Yerba Mate</text>
+              <ellipse cx="200" cy="116" rx="12" ry="4" fill="#3E2A20" opacity="0.25"/>
+              <path d="M200 58 c-17 0-30 13-30 29 c0 22 30 48 30 48 s30-26 30-48 c0-16-13-29-30-29z" fill="#2f5d2e"/>
+              <circle cx="200" cy="87" r="10" fill="#FDFBF7"/>
+            </svg>
+          </div>
+        </div>
+      </section>
+
+      <section class="bloque glass" aria-labelledby="escribinos-t">
+        <h2 id="escribinos-t">Escribinos</h2>
+        <p class="nota">Decinos tu nombre y lo mandás por WhatsApp con el texto ya armado.</p>
+        <div class="field"><label for="nombre-wa">Tu nombre</label><input id="nombre-wa" type="text" maxlength="40" autocomplete="given-name" placeholder="Ej: Martina"></div>
+        <a id="wa-link" class="btn solid" href="#" target="_blank" rel="noopener">💬 Escribir por WhatsApp</a>
+      </section>
+    </section>
+
+    <!-- BOUTIQUE -->
+    <section id="v-tienda" hidden>
+      <div class="titulo"><span class="eyebrow">Boutique</span><h1>Boutique de Productos</h1><p class="lead">Mates, yerbas, termos y bombillas para tu ritual.</p></div>
+      <div class="filtros" id="filtros" role="group" aria-label="Categorías"></div>
+      <div class="productos" id="catalogo"><p class="nota">Cargando productos…</p></div>
+      <div class="bloque glass banner">
+        <div class="banner-img" id="banner-ilus" role="img" aria-label="Un mate de algarrobo con bombilla de alpaca y un termo"></div>
+        <div><h2>Experiencia “Armá tu Mate”</h2><p class="nota">Elegí tu mate, yerba, bombilla y accesorios paso a paso. Creá una combinación única para vos o para regalar.</p></div>
+        <a class="btn solid" href="#armar">🎨 Abrir el armador</a>
+      </div>
+    </section>
+
+    <!-- ARMADOR -->
+    <section id="v-armar" hidden>
+      <div class="titulo"><span class="eyebrow">Cómo armamos tu kit</span><h1>Armá tu mate</h1><p class="lead">Elegí cada pieza paso a paso y creá una combinación única. Mirá cómo queda mientras lo armás.</p></div>
+      <figure class="foto-ancha" id="kit-banner" role="img" aria-label="Las cuatro piezas del kit: mate, yerba, bombilla y termo"></figure>
+
+      <ol class="guia">
+        <li class="glass"><span class="num">01</span><h3>Elegí tu mate</h3><p>Algarrobo o torpedo.</p></li>
+        <li class="glass"><span class="num">02</span><h3>Elegí tu yerba</h3><p>Orgánica suave o con hierbas serranas.</p></li>
+        <li class="glass"><span class="num">03</span><h3>Elegí tu bombilla</h3><p>Acero o alpaca.</p></li>
+        <li class="glass"><span class="num">04</span><h3>Armá tu kit</h3><p>Sumá el termo, y listo.</p></li>
+      </ol>
+
+      <div class="armador-grid">
+        <div class="bloque glass vista-mate">
+          <figure class="fig" id="mate-fig" role="img" aria-label="Ilustración del mate armado"></figure>
+          <ul class="kit-resumen" id="kit-resumen" aria-label="Tu kit"></ul>
+          <div class="armador-pie">
+            <span class="nota">Total del kit</span>
+            <strong class="grande" id="armador-total">$0</strong>
+          </div>
+        </div>
+
+        <form id="armador" class="bloque glass" novalidate>
+          <div class="paso-cab">
+            <span class="eyebrow">Paso <span id="paso-actual">1</span> de 4</span>
+            <div class="progreso" aria-hidden="true"><span id="progreso-barra"></span></div>
+          </div>
+          <div id="pasos"></div>
+          <p class="error" id="armador-error" role="alert"></p>
+          <div class="armador-nav">
+            <button type="button" class="btn soft" id="paso-prev">← Anterior</button>
+            <button type="button" class="btn solid" id="paso-next">Siguiente →</button>
+          </div>
+        </form>
+      </div>
+
+      <div class="titulo estilos-titulo"><span class="eyebrow">Encontrá el tuyo</span><h2>Estilos de mate</h2><p class="lead">Cada estilo tiene su carácter: probalos en el local antes de elegir el tuyo.</p></div>
+      <div class="estilos" id="estilos"></div>
+    </section>
+
+    <!-- MENÚ -->
+    <section id="v-menu" hidden>
+      <div class="titulo"><span class="eyebrow">En el local</span><h1>Menú del local</h1><p class="lead">Café de especialidad, pastelería y salados, todos los días.</p></div>
+      <div class="bloque glass" id="menu-lista"></div>
+    </section>
+
+    <!-- RESERVAS -->
+    <section id="v-reservas" hidden>
+      <div class="titulo"><span class="eyebrow">Sentate con nosotros</span><h1>Reservas</h1><p class="lead">Tradición y buen aroma en cada rincón. Atendemos de 08:00 a 20:00.</p></div>
+      <form id="reservationForm" class="bloque glass angosto" novalidate>
+        <div class="field">
+          <label id="personas-l">Cantidad de personas</label>
+          <div class="person-selector" id="personSelector" role="group" aria-labelledby="personas-l">
+            <button type="button" class="person-btn active" data-persons="1" aria-pressed="true">1</button>
+            <button type="button" class="person-btn" data-persons="2" aria-pressed="false">2</button>
+            <button type="button" class="person-btn" data-persons="4" aria-pressed="false">4</button>
+            <button type="button" class="person-btn" data-persons="6" aria-pressed="false">6+</button>
+          </div>
+          <div class="table-info" id="tableInfo" aria-live="polite"></div>
+        </div>
+        <div class="field"><label for="reservationDate">Fecha de reserva</label><input type="date" id="reservationDate" required></div>
+        <div class="field"><label for="timeSlot">Horario disponible</label><select id="timeSlot" required></select></div>
+        <div class="field"><label for="clientName">Nombre y apellido</label><input type="text" id="clientName" placeholder="Ej. Lucía Gómez" autocomplete="name" required></div>
+        <div class="field"><label for="clientPhone">Teléfono de contacto</label><input type="tel" id="clientPhone" placeholder="Ej. 11 1234 5678" autocomplete="tel" required></div>
+        <p class="error" id="reservationError" role="alert"></p>
+        <button type="submit" class="btn solid full">Reservar</button>
+      </form>
+      <div class="bloque glass angosto" id="misReservas" hidden>
+        <h2>Tus reservas en este dispositivo</h2>
+        <ul class="reservas-lista" id="misReservasLista"></ul>
+      </div>
+    </section>
+
+    <!-- INVITACIÓN -->
+    <section id="v-invitar" hidden>
+      <div class="titulo"><span class="eyebrow">Compartí un momento</span><h1>Invitá a un amigo</h1><p class="lead">Armá una invitación personal para un conocido y mandásela por WhatsApp.</p></div>
+      <form id="inv-form" class="bloque glass angosto" novalidate>
+        <div class="field"><label for="host">Tu nombre</label><input id="host" name="host" type="text" maxlength="40" autocomplete="name" placeholder="Ej: Martina" required></div>
+        <div class="field"><label for="guest">Nombre de tu amigo</label><input id="guest" name="guest" type="text" maxlength="40" placeholder="Ej: Federico" required></div>
+        <div class="field"><label for="occasion">Ocasión</label>
+          <input id="occasion" name="occasion" type="text" maxlength="60" list="ocasiones" value="Mateada de bienvenida">
+          <datalist id="ocasiones"><option value="Mateada de bienvenida"></option><option value="Café de la tarde"></option><option value="Cumpleaños"></option><option value="Charla de café"></option><option value="Mateada entre amigos"></option></datalist></div>
+        <div class="dos">
+          <div class="field"><label for="date">Fecha</label><input id="date" name="date" type="date" required></div>
+          <div class="field"><label for="time">Hora</label><input id="time" name="time" type="time" value="17:00" required></div>
+        </div>
+        <div class="field"><label for="party">Cantidad de personas</label><input id="party" name="party" type="number" min="1" max="20" value="2" required></div>
+        <div class="field"><label for="msg">Mensaje</label><textarea id="msg" name="msg" maxlength="280" rows="3">Te guardamos tu mesa. Vení con ganas de charlar y probar el mate de la casa.</textarea></div>
+        <p class="error" id="inv-error" role="alert"></p>
+        <button type="submit" class="btn solid full">Crear invitación</button>
+      </form>
+
+      <section id="inv-resultado" class="bloque glass angosto" hidden aria-live="polite">
+        <h2>Tu invitación está lista</h2>
+        <p class="nota" id="inv-resumen"></p>
+        <div class="tarjeta-inv">
+          <span class="eyebrow">MATE &amp; CAFÉ</span>
+          <p class="para">Para <strong id="inv-tarjeta-para"></strong></p>
+          <h3 id="inv-tarjeta-ocasion"></h3>
+          <p id="inv-tarjeta-cuando"></p>
+          <p class="nota" id="inv-tarjeta-quien"></p>
+          <p class="mensaje" id="inv-tarjeta-msg"></p>
+        </div>
+        <div class="field"><label for="inv-texto">Texto para enviar</label><textarea id="inv-texto" rows="4" readonly></textarea></div>
+        <div class="actions">
+          <button type="button" class="btn soft" id="inv-copiar">Copiar texto</button>
+          <a class="btn solid" id="inv-wa" href="#" target="_blank" rel="noopener">💬 Mandar por WhatsApp</a>
+        </div>
+        <p class="nota" id="inv-estado" role="status"></p>
+      </section>
+    </section>
+
+    <!-- CARRITO -->
+    <section id="v-carrito" hidden>
+      <div class="titulo"><span class="eyebrow">Tu pedido</span><h1>Carrito</h1></div>
+      <div class="bloque glass" id="carrito-vacio" hidden>
+        <p>Tu carrito está vacío.</p>
+        <div class="actions"><a class="btn solid" href="#tienda">Ver la boutique</a><a class="btn soft" href="#armar">Armar mi mate</a></div>
+      </div>
+      <div id="carrito-contenido" hidden>
+        <div class="bloque glass" id="lineas"></div>
+        <div class="bloque glass resumen">
+          <h2>Entrega</h2>
+          <div class="opciones">
+            <label class="opcion"><input type="radio" name="entrega" value="envio" checked><span class="opcion-nombre">Envío a domicilio</span></label>
+            <label class="opcion"><input type="radio" name="entrega" value="retiro"><span class="opcion-nombre">Retiro en el local</span></label>
+          </div>
+          <dl>
+            <dt>Subtotal</dt><dd id="subtotal">…</dd>
+            <dt>Envío</dt><dd id="envio">…</dd>
+            <dt class="total">Total</dt><dd class="total" id="total">…</dd>
+          </dl>
+          <p class="nota" id="aviso-envio"></p>
+          <p class="nota verde" id="aviso-transferencia"></p>
+          <p class="error" id="error-stock" hidden>Hay productos sin stock suficiente. Bajá la cantidad o quitalos para seguir.</p>
+          <p class="error" id="error-general" hidden></p>
+          <button type="button" class="btn solid full" id="seguir">Seguir al pago</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPRA -->
+    <section id="v-compra" hidden>
+      <div class="titulo"><span class="eyebrow">Último paso</span><h1>Finalizar compra</h1></div>
+      <div class="checkout-grid">
+        <form id="form" class="bloque glass" novalidate>
+          <h2>Tus datos</h2>
+          <div class="field"><label for="nombre">Nombre y apellido</label><input type="text" id="nombre" name="nombre" autocomplete="name" required></div>
+          <div class="field"><label for="telefono">Teléfono (para coordinar)</label><input type="tel" id="telefono" name="telefono" autocomplete="tel" required></div>
+          <div class="field"><label for="email">Email (opcional)</label><input type="email" id="email" name="email" autocomplete="email"></div>
+
+          <h2>Entrega</h2>
+          <div class="opciones">
+            <label class="opcion"><input type="radio" name="entrega-c" value="envio" checked><span class="opcion-nombre">Envío a domicilio</span></label>
+            <label class="opcion"><input type="radio" name="entrega-c" value="retiro"><span class="opcion-nombre">Retiro en el local</span></label>
+          </div>
+          <div class="field" id="bloque-direccion"><label for="direccion-envio">Dirección de envío</label><input type="text" id="direccion-envio" name="direccion" autocomplete="street-address"></div>
+
+          <h2>Forma de pago</h2>
+          <div class="opciones">
+            <label class="opcion deshabilitada"><input type="radio" name="pago" value="mercadopago" disabled><span class="opcion-nombre">Mercado Pago (tarjeta, débito o dinero en cuenta)<small>Disponible cuando se conecte el servidor de pagos.</small></span></label>
+            <label class="opcion"><input type="radio" name="pago" value="transferencia"><span class="opcion-nombre">Transferencia (10 % de descuento sobre productos)</span></label>
+            <label class="opcion"><input type="radio" name="pago" value="whatsapp" checked><span class="opcion-nombre">Coordinar por WhatsApp</span></label>
+          </div>
+
+          <p class="error" id="error" role="alert" hidden></p>
+          <button type="submit" class="btn solid full" id="enviar">Continuar</button>
+        </form>
+
+        <aside>
+          <div class="bloque glass resumen">
+            <h2>Resumen</h2>
+            <div id="resumen-lineas"></div>
+            <dl>
+              <dt>Subtotal</dt><dd id="r-subtotal"></dd>
+              <dt>Descuento</dt><dd id="r-descuento"></dd>
+              <dt>Envío</dt><dd id="r-envio"></dd>
+              <dt class="total">Total</dt><dd class="total" id="r-total"></dd>
+            </dl>
+          </div>
+          <div class="bloque glass" id="instrucciones-transferencia" hidden>
+            <h2>Pagá por transferencia</h2>
+            <p>Alias: <strong id="alias"></strong></p>
+            <p>Monto: <strong id="monto"></strong></p>
+            <p class="nota">Después mandanos el comprobante por WhatsApp para coordinar la entrega.</p>
+            <a class="btn solid full" id="wa-transferencia" href="#" target="_blank" rel="noopener">💬 Enviar pedido por WhatsApp</a>
+          </div>
+        </aside>
+      </div>
+
+      <div class="bloque glass angosto" id="pedido-enviado" hidden>
+        <h2>Tu pedido está listo para enviar</h2>
+        <p>Tocá el botón para abrir WhatsApp con el pedido ya escrito. Cuando lo mandes, coordinamos el pago y la entrega.</p>
+        <div class="actions">
+          <a class="btn solid" id="wa-pedido" href="#" target="_blank" rel="noopener">💬 Abrir WhatsApp</a>
+          <button type="button" class="btn soft" id="vaciar">Vaciar carrito y volver</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div class="modal" id="confirmationModal" role="dialog" aria-modal="true" aria-labelledby="modal-titulo" hidden>
+    <div class="modal-content">
+      <h3 id="modal-titulo">¡Reserva exitosa!</h3>
+      <p id="modalText">Tu mesa ha sido reservada correctamente en Mate y Café.</p>
+      <button type="button" class="btn solid" id="closeModalBtn">Aceptar</button>
+    </div>
+  </div>
+
+  <footer class="pie glass">
+    <p class="pie-marca">MATE &amp; CAFÉ</p>
+    <p class="nota">Av. Yerba Mate 1801, Palermo, CABA, Argentina</p>
+    <p class="nota">© 2026 MATE &amp; CAFÉ. Todos los derechos reservados.</p>  </footer>
+</div>
+
+<script type="module" src="js/app.js"></script>
+</body>
+</html>
