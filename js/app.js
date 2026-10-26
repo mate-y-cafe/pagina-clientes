@@ -7,6 +7,7 @@ import { MC_DATA } from "./datos.js";
 import { iniciarReservas } from "./reservas.js";
 import { iniciarInvitacion } from "./invitacion.js";
 import { dibujarMate, dibujarHero, dibujarKit } from "./ilustracion.js";
+import { iniciarPersonalizador } from "./personalizador.js";
 
 const $ = (id) => document.getElementById(id);
 const fmt = (n) => new Intl.NumberFormat("es-AR", { style: "currency", currency: "ARS", maximumFractionDigits: 0 }).format(n);
@@ -94,98 +95,6 @@ function iniciarTienda() {
     setTimeout(() => { b.textContent = antes; }, 1200);
   });
   renderCatalogo();
-}
-
-// ---------- Armador ----------
-// Pasos en el orden de la web original: mate, yerba, bombilla y kit (extras).
-const ORDEN = ["mate", "yerba", "bombilla", "extras"];
-let paso = 0;
-
-// Estilos de mate (de VENTAS-ONLINE/mate.html).
-const ESTILOS_MATE = [
-  { clave: "calabaza", nombre: "Mate Calabaza", desc: "El clásico. Curado tradicional, listo para el día a día.", precio: 9800 },
-  { clave: "torpedo", nombre: "Mate Torpedo", desc: "Pintado a mano, diseño exclusivo de artistas locales.", precio: 14700 },
-  { clave: "algarrobo", nombre: "Mate Imperial", desc: "Tallado en algarrobo, virolado en alpaca. Pieza de autor.", precio: 18500 },
-  { clave: "ceramica", nombre: "Mate de Cerámica", desc: "Esmaltado y pintado a mano, fácil de mantener.", precio: 12300 },
-];
-
-function elegido(pasoId) {
-  return [...document.querySelectorAll(`#armador input[name="${pasoId}"]:checked`)].map((i) => i.value);
-}
-
-function seleccion() {
-  return { mate: elegido("mate")[0], bombilla: elegido("bombilla")[0], yerba: elegido("yerba")[0], extras: elegido("extras") };
-}
-
-const opcionPor = (id) => cat.pasos.flatMap((p) => p.opciones).find((o) => o.id === id);
-
-function pintarKit() {
-  const s = seleccion();
-  $("mate-fig").innerHTML = dibujarMate(s, { id: "main" });
-  const ids = [s.mate, s.yerba, s.bombilla, ...s.extras].filter(Boolean);
-  $("kit-resumen").innerHTML = ids.map((id) => `<li><span>${esc(opcionPor(id)?.nombre ?? id)}</span><span>${fmt(opcionPor(id)?.precio ?? 0)}</span></li>`).join("");
-  $("armador-total").textContent = fmt(ids.reduce((suma, id) => suma + (opcionPor(id)?.precio ?? 0), 0));
-}
-
-function mostrarPaso() {
-  document.querySelectorAll("#pasos .paso").forEach((f, i) => { f.hidden = i !== paso; });
-  $("paso-actual").textContent = paso + 1;
-  $("progreso-barra").style.width = `${((paso + 1) / ORDEN.length) * 100}%`;
-  $("paso-prev").hidden = paso === 0;
-  $("paso-next").textContent = paso === ORDEN.length - 1 ? "Agregar al carrito" : "Siguiente →";
-}
-
-function agregarKit() {
-  const { mate, bombilla, yerba, extras } = seleccion();
-  const err = $("armador-error");
-  if (!mate || !bombilla || !yerba) {
-    err.textContent = "Elegí mate, yerba y bombilla para armar tu combo.";
-    return;
-  }
-  err.textContent = "";
-  const nombre = [mate, bombilla, yerba, ...extras].map((id) => opcionPor(id)?.nombre ?? id).join(" + ");
-  items = agregarItem({ id: "armado", nombre: `Kit armado: ${nombre}`, cantidad: 1, armado: { mate, bombilla, yerba, extras } });
-  actualizarContador();
-  ir("carrito");
-}
-
-function avanzar() {
-  if (paso < ORDEN.length - 1) { paso += 1; mostrarPaso(); } else agregarKit();
-}
-
-function iniciarArmador() {
-  const pasos = ORDEN.map((id) => cat.pasos.find((p) => p.id === id)).filter(Boolean);
-  $("pasos").innerHTML = pasos.map((p) => {
-    const multiple = p.id === "extras";
-    return `
-      <fieldset class="paso">
-        <legend>${esc(p.titulo)}${multiple ? " (opcional)" : ""}</legend>
-        <div class="opciones">
-          ${p.opciones.map((o, i) => `
-            <label class="opcion">
-              <input type="${multiple ? "checkbox" : "radio"}" name="${esc(p.id)}" value="${esc(o.id)}" ${!multiple && i === 0 ? "checked" : ""}>
-              <span class="opcion-nombre">${esc(o.nombre)}</span>
-              <span class="opcion-precio">${fmt(o.precio)}</span>
-            </label>`).join("")}
-        </div>
-      </fieldset>`;
-  }).join("");
-
-  $("armador").addEventListener("change", pintarKit);
-  $("armador").addEventListener("submit", (e) => { e.preventDefault(); avanzar(); });
-  $("paso-next").addEventListener("click", avanzar);
-  $("paso-prev").addEventListener("click", () => { if (paso > 0) { paso -= 1; mostrarPaso(); } });
-
-  $("estilos").innerHTML = ESTILOS_MATE.map((e) => `
-    <article class="estilo glass">
-      <div class="estilo-fig" aria-hidden="true">${dibujarMate({ mate: e.clave, bombilla: "bombilla-acero", yerba: "yerba-organica-suave", extras: [] }, { id: "e" + e.clave, mini: true })}</div>
-      <h3>${esc(e.nombre)}</h3>
-      <p class="desc">${esc(e.desc)}</p>
-      <strong class="precio">${fmt(e.precio)}</strong>
-    </article>`).join("");
-
-  pintarKit();
-  mostrarPaso();
 }
 
 // ---------- Carrito ----------
@@ -401,11 +310,12 @@ function iniciarInicio() {
 async function arrancar() {
   $("hero-art").innerHTML = dibujarHero();
   $("kit-banner").innerHTML = dibujarKit();
-  $("banner-ilus").innerHTML = dibujarMate({ mate: "mate-algarrobo", bombilla: "bombilla-alpaca", yerba: "yerba-serranas", extras: ["acc-termo"] }, { id: "ban" });
+  $("banner-ilus").innerHTML = dibujarMate({ mate: "mate-algarrobo", bombilla: "bombilla-alpaca", yerba: "yerba-serranas", extras: [] }, { id: "ban" });
   iniciarInicio();
   iniciarMenu();
   iniciarReservas();
   iniciarInvitacion();
+  iniciarPersonalizador();
   iniciarCarrito();
   iniciarCompra();
   actualizarContador();
@@ -413,7 +323,6 @@ async function arrancar() {
   try {
     cat = await cargarCatalogo();
     iniciarTienda();
-    iniciarArmador();
     if (location.hash === "#carrito") renderCarrito();
     if (location.hash === "#compra") renderCompra();
   } catch {

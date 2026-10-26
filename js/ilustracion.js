@@ -270,12 +270,12 @@ export function dibujarKit() {
     `<clipPath id="${p}cp"><path d="${estilo.cuerpo}"/></clipPath></defs>` +
     fondoEscena(p, 262, -300, 1300, 340) +
     grupoHoja(p, 60, 150, -14, 1.5) + grupoHoja(p, 900, 70, 196, 1.4) +
-    insignia(250, "01") + insignia(410, "02") + insignia(540, "03") + insignia(730, "04") +
-    `<g transform="translate(250 288) scale(.9) translate(-180 -248)">${grupoMate(p, "calabaza", "yerba-organica-suave", "bombilla-alpaca")}</g>` +
-    `<g transform="translate(410 292) scale(1.05)">${grupoBolsa(p)}</g>` +
+    insignia(300, "01") + insignia(450, "02") + insignia(590, "03") +
+    `<g transform="translate(300 288) scale(.9) translate(-180 -248)">${grupoMate(p, "calabaza", "yerba-organica-suave", "bombilla-alpaca")}</g>` +
+    `<g transform="translate(450 292) scale(1.05)">${grupoBolsa(p)}</g>` +
     // Bombilla de alpaca apoyada en la mesa
-    `<g transform="translate(540 296) rotate(-8)"><ellipse cx="0" cy="8" rx="64" ry="4" fill="#3d2a20" opacity=".3" filter="url(#${p}b6)"/>` +
+    `<g transform="translate(590 296) rotate(-8)"><ellipse cx="0" cy="8" rx="64" ry="4" fill="#3d2a20" opacity=".3" filter="url(#${p}b6)"/>` +
     `<path d="M-62 0 L50 0" stroke="url(#${p}tubo)" stroke-width="6" stroke-linecap="round"/><path d="M-60 -1.6 L48 -1.6" stroke="#fff" stroke-width="1.3" opacity=".7" stroke-linecap="round"/>` +
     `<polygon points="48,-3.6 48,3.6 70,6 70,-6" fill="url(#${p}pico)"/><ellipse cx="-62" cy="0" rx="5" ry="6.4" fill="url(#${p}tubo)"/></g>` +
-    `<g transform="translate(730 294) scale(1.02)">${grupoTermo(p)}</g></svg>`;
+    `</svg>`;
 }

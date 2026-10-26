@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Mate & Café: boutique online, armador de kits, menú del local, reservas e invitaciones.">
+<meta name="description" content="Mate & Café: boutique online, personalizador 3D de mates, menú del local, reservas e invitaciones.">
 <title>Mate & Café</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,wght@0,500;0,600;0,700;0,900;1,700;1,900&family=Manrope:wght@400;500;600;700;800&display=swap">
@@ -18,7 +18,7 @@
     </a>
     <ul class="links">
       <li><a href="#tienda" data-nav="tienda">Boutique</a></li>
-      <li><a href="#armar" data-nav="armar">Armá tu Mate</a></li>
+      <li><a href="#armar" data-nav="armar">Diseñá tu Mate</a></li>
       <li><a href="#menu" data-nav="menu">Menú del Local</a></li>
       <li><a href="#reservas" data-nav="reservas">Reservas</a></li>
       <li><a href="#invitar" data-nav="invitar">Invitá a un amigo</a></li>
@@ -36,7 +36,7 @@
           <p class="lead">Disfrutá de nuestra pastelería artesanal y café de origen en nuestro local, o comprá kits de mate personalizados para llevarte la experiencia a tu casa.</p>
           <div class="actions">
             <a class="btn solid" href="#tienda">🧉 Ver Tienda Online</a>
-            <a class="btn soft" href="#armar">✨ Armá tu Kit Personalizado</a>
+            <a class="btn soft" href="#armar">✨ Diseñá tu mate</a>
           </div>
         </div>
         <div class="hero-art" id="hero-art" role="img" aria-label="Un mate con bombilla, una taza de café y un termo sobre una mesa de madera"></div>
@@ -93,50 +93,67 @@
       <div class="filtros" id="filtros" role="group" aria-label="Categorías"></div>
       <div class="productos" id="catalogo"><p class="nota">Cargando productos…</p></div>
       <div class="bloque glass banner">
-        <div class="banner-img" id="banner-ilus" role="img" aria-label="Un mate de algarrobo con bombilla de alpaca y un termo"></div>
-        <div><h2>Experiencia “Armá tu Mate”</h2><p class="nota">Elegí tu mate, yerba, bombilla y accesorios paso a paso. Creá una combinación única para vos o para regalar.</p></div>
-        <a class="btn solid" href="#armar">🎨 Abrir el armador</a>
+        <div class="banner-img" id="banner-ilus" role="img" aria-label="Un mate de algarrobo con bombilla de alpaca"></div>
+        <div><h2>Diseñá tu mate</h2><p class="nota">Elegí tu mate, yerba y bombilla, mirá cómo queda en 3D y mandá tu pedido. Una combinación única para vos o para regalar.</p></div>
+        <a class="btn solid" href="#armar">🎨 Abrir el personalizador</a>
       </div>
     </section>
 
     <!-- ARMADOR -->
-    <section id="v-armar" hidden>
-      <div class="titulo"><span class="eyebrow">Cómo armamos tu kit</span><h1>Armá tu mate</h1><p class="lead">Elegí cada pieza paso a paso y creá una combinación única. Mirá cómo queda mientras lo armás.</p></div>
-      <figure class="foto-ancha" id="kit-banner" role="img" aria-label="Las cuatro piezas del kit: mate, yerba, bombilla y termo"></figure>
+        <section id="v-armar" hidden>
+      <div class="titulo"><span class="eyebrow">Personalizador</span><h1>Diseñá tu mate</h1><p class="lead">Elegí cada pieza, mirá cómo queda en 3D y mandá tu pedido. Lo preparamos para que lo retires en el local.</p></div>
+      <figure class="foto-ancha" id="kit-banner" role="img" aria-label="Las tres piezas de tu mate: mate, yerba y bombilla"></figure>
 
-      <ol class="guia">
-        <li class="glass"><span class="num">01</span><h3>Elegí tu mate</h3><p>Algarrobo o torpedo.</p></li>
-        <li class="glass"><span class="num">02</span><h3>Elegí tu yerba</h3><p>Orgánica suave o con hierbas serranas.</p></li>
-        <li class="glass"><span class="num">03</span><h3>Elegí tu bombilla</h3><p>Acero o alpaca.</p></li>
-        <li class="glass"><span class="num">04</span><h3>Armá tu kit</h3><p>Sumá el termo, y listo.</p></li>
-      </ol>
-
-      <div class="armador-grid">
-        <div class="bloque glass vista-mate">
-          <figure class="fig" id="mate-fig" role="img" aria-label="Ilustración del mate armado"></figure>
-          <ul class="kit-resumen" id="kit-resumen" aria-label="Tu kit"></ul>
-          <div class="armador-pie">
-            <span class="nota">Total del kit</span>
-            <strong class="grande" id="armador-total">$0</strong>
+      <div class="pv-grid">
+        <aside class="pv-aside" aria-label="Vista previa de tu mate">
+          <div class="pv-cab">
+            <p class="pv-etq">Vista previa</p>
+            <p class="pv-total">Total <span id="pv-total">$0</span></p>
           </div>
+          <div id="pv-stage"></div>
+          <p id="pv-resumen" class="pv-resumen"></p>
+          <p id="pv-caption" class="pv-caption"></p>
+          <ul id="pv-lista" class="pv-lista"></ul>
+          <p class="pv-nota">Pagás en caja al retirar.</p>
+        </aside>
+
+        <div class="pv-pasos">
+          <section class="bloque glass pv-paso">
+            <header><span class="pv-num">01</span><div><h3>¿Para qué es el mate?</h3><p class="nota">Según el uso te marcamos lo recomendado en cada paso</p></div></header>
+            <div id="opts-uso" class="pv-opts"></div>
+          </section>
+          <section class="bloque glass pv-paso">
+            <header><span class="pv-num">02</span><div><h3>Elegí el mate</h3><p class="nota">Cuerpo y material</p></div></header>
+            <div id="opts-mate" class="pv-opts"></div>
+          </section>
+          <section class="bloque glass pv-paso">
+            <header><span class="pv-num">03</span><div><h3>Elegí la yerba</h3><p class="nota">El blend que vas a cebar</p></div></header>
+            <div id="opts-yerba" class="pv-opts"></div>
+          </section>
+          <section class="bloque glass pv-paso">
+            <header><span class="pv-num">04</span><div><h3>Elegí la bombilla</h3><p class="nota">Material y filtro</p></div></header>
+            <div id="opts-bombilla" class="pv-opts"></div>
+          </section>
+          <section class="bloque glass pv-paso">
+            <header><span class="pv-num">05</span><div><h3>Personalizalo y enviá el pedido</h3><p class="nota">Grabado y tus datos para retirarlo</p></div></header>
+            <form id="pedido-form">
+              <div class="field"><label for="f-grabado">Grabado en el mate <span id="lbl-grabado-extra" class="nota">(opcional, hasta 14 caracteres)</span></label>
+                <input id="f-grabado" maxlength="14" placeholder="Ej: Ana, Mate de Lucas" autocomplete="off"></div>
+              <div class="dos">
+                <div class="field"><label for="f-nombre">Tu nombre *</label><input id="f-nombre" required maxlength="40" placeholder="Nombre y apellido" autocomplete="name"></div>
+                <div class="field"><label for="f-telefono">Teléfono / WhatsApp *</label><input id="f-telefono" type="tel" required maxlength="20" pattern="[0-9 +\-\(\)]{6,20}" placeholder="11 2345-6789" autocomplete="tel"></div>
+              </div>
+              <div class="field"><label for="f-nota"><span id="lbl-nota">Nota para quien arma el mate</span> <span class="nota">(opcional)</span></label>
+                <textarea id="f-nota" rows="2" maxlength="200" placeholder="Ej: que la bombilla sea más angosta"></textarea></div>
+              <div class="pv-envio">
+                <p class="nota">Te damos un código de pedido. Mostralo en caja al retirar tu mate.</p>
+                <button id="btn-enviar" type="submit" class="btn solid">📨 Enviar pedido al cajero</button>
+              </div>
+            </form>
+            <div id="pedido-confirmacion" class="pv-confirmacion" hidden></div>
+          </section>
         </div>
-
-        <form id="armador" class="bloque glass" novalidate>
-          <div class="paso-cab">
-            <span class="eyebrow">Paso <span id="paso-actual">1</span> de 4</span>
-            <div class="progreso" aria-hidden="true"><span id="progreso-barra"></span></div>
-          </div>
-          <div id="pasos"></div>
-          <p class="error" id="armador-error" role="alert"></p>
-          <div class="armador-nav">
-            <button type="button" class="btn soft" id="paso-prev">← Anterior</button>
-            <button type="button" class="btn solid" id="paso-next">Siguiente →</button>
-          </div>
-        </form>
       </div>
-
-      <div class="titulo estilos-titulo"><span class="eyebrow">Encontrá el tuyo</span><h2>Estilos de mate</h2><p class="lead">Cada estilo tiene su carácter: probalos en el local antes de elegir el tuyo.</p></div>
-      <div class="estilos" id="estilos"></div>
     </section>
 
     <!-- MENÚ -->
@@ -216,7 +233,7 @@
       <div class="titulo"><span class="eyebrow">Tu pedido</span><h1>Carrito</h1></div>
       <div class="bloque glass" id="carrito-vacio" hidden>
         <p>Tu carrito está vacío.</p>
-        <div class="actions"><a class="btn solid" href="#tienda">Ver la boutique</a><a class="btn soft" href="#armar">Armar mi mate</a></div>
+        <div class="actions"><a class="btn solid" href="#tienda">Ver la boutique</a><a class="btn soft" href="#armar">Diseñar mi mate</a></div>
       </div>
       <div id="carrito-contenido" hidden>
         <div class="bloque glass" id="lineas"></div>
@@ -314,6 +331,7 @@
     <p class="nota">© 2026 MATE &amp; CAFÉ. Todos los derechos reservados.</p>  </footer>
 </div>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script type="module" src="js/app.js"></script>
 </body>
 </html>
